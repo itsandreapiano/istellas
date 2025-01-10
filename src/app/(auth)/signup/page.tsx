@@ -22,7 +22,7 @@ export default function Page() {
             </h1>
             <p className="text-muted-foreground">
               The first{" "}
-              <span className="font-bold italic text-gray-600">proper</span>{" "}
+              <span className="font-bold italic text-gray-500">proper</span>{" "}
               astrology social media app.
             </p>
           </div>
