@@ -5,6 +5,7 @@ import Link from "next/link";
 import signupImage from "@/assets/signup-image.jpg";
 
 import SignUpForm from "./SignUpForm";
+import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Sign Up",
@@ -16,9 +17,12 @@ export default function Page() {
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
         <div className="w-full space-y-10 overflow-y-auto p-10 md:w-1/2">
           <div className="space-y-1 text-center">
-            <h1 className="text-3xl font-bold">Sign up to iStellas</h1>
+            <h1 className="text-3xl font-bold">
+              Sign up to <Logo />
+            </h1>
             <p className="text-muted-foreground">
-              The first <span className="font-bold text-gray-600">PROPER</span>{" "}
+              The first{" "}
+              <span className="font-bold italic text-gray-600">proper</span>{" "}
               astrology social media app.
             </p>
           </div>

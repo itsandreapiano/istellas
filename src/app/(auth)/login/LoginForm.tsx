@@ -76,9 +76,11 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
-        <LoadingButton loading={isPending} type="submit" className="w-full">
-          Log in
-        </LoadingButton>
+        <div className="!mt-4">
+          <LoadingButton loading={isPending} type="submit" className="w-full">
+            Log in
+          </LoadingButton>
+        </div>
       </form>
     </Form>
   );
