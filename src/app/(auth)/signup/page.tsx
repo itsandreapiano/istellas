@@ -31,7 +31,7 @@ export default function Page() {
 
             <Link
               href="/login"
-              className="small block text-center text-xs font-bold text-blue-900 hover:underline"
+              className="small block text-center text-xs font-bold text-blue-800 underline"
             >
               Already have an account? Click here to Log in.
             </Link>

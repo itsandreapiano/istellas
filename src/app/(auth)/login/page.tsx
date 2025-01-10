@@ -21,9 +21,9 @@ export default function Page() {
             <LoginForm />
             <Link
               href="/signup"
-              className="small block text-center text-xs font-bold text-blue-900 hover:underline"
+              className="small block text-center text-xs font-bold underline"
             >
-              Don&apos;t have an account yet? Sign up.
+              Don&apos;t have an account yet? Click here to sign up.
             </Link>
           </div>
         </div>
