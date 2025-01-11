@@ -51,7 +51,7 @@ export default function UserButton({ className }: UserButtonProps) {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Welcome, @{user.username}!</DropdownMenuLabel>
+        <DropdownMenuLabel>Hey, @{user.username}!</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <Link href={`/users/${user.username}`}>
           <DropdownMenuItem>
