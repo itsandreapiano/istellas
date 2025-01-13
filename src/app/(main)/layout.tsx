@@ -1,14 +1,13 @@
-import { validateRequest } from "@/auth";
 import { redirect } from "next/navigation";
-import Navbar from "./Navbar";
+
+import { validateRequest } from "@/auth";
+
 import SessionProvider from "./SessionProvider";
+
+import Navbar from "./Navbar";
 import MenuBar from "./MenuBar";
 
-export default async function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
   const session = await validateRequest();
 
   if (!session.user) redirect("/login");
@@ -25,4 +24,6 @@ export default async function Layout({
       </div>
     </SessionProvider>
   );
-}
+};
+
+export default Layout;

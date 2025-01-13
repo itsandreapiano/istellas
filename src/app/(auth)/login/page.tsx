@@ -1,15 +1,18 @@
-import loginImage from "@/assets/login-image.jpg";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import loginImage from "@/assets/login-image.jpg";
+
+import Logo from "@/components/ui/Logo";
+
 import LoginForm from "./LoginForm";
-import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Login",
 };
 
-export default function Page() {
+const LoginPage = () => {
   return (
     <main className="flex h-screen items-center justify-center p-5">
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
@@ -35,4 +38,6 @@ export default function Page() {
       </div>
     </main>
   );
-}
+};
+
+export default LoginPage;

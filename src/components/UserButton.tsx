@@ -3,6 +3,8 @@
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
+import { useQueryClient } from "@tanstack/react-query";
+
 import {
   Check,
   LogOutIcon,
@@ -30,7 +32,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "./ui/DropdownMenu";
 
 import UserAvatar from "./UserAvatar";
 
@@ -38,10 +40,12 @@ interface UserButtonProps {
   className?: string;
 }
 
-export default function UserButton({ className }: UserButtonProps) {
+const UserButton = ({ className }: UserButtonProps) => {
   const { user } = useSession();
 
   const { theme, setTheme } = useTheme();
+
+  const queryClient = useQueryClient();
 
   return (
     <DropdownMenu>
@@ -97,6 +101,7 @@ export default function UserButton({ className }: UserButtonProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
+            queryClient.clear();
             logout();
           }}
         >
@@ -106,4 +111,6 @@ export default function UserButton({ className }: UserButtonProps) {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
+
+export default UserButton;

@@ -5,13 +5,13 @@ import Link from "next/link";
 import signupImage from "@/assets/signup-image.jpg";
 
 import SignUpForm from "./SignUpForm";
-import Logo from "@/components/Logo";
+import Logo from "@/components/ui/Logo";
 
 export const metadata: Metadata = {
   title: "Sign Up",
 };
 
-export default function Page() {
+const SignUpPage = () => {
   return (
     <main className="flex h-screen items-center justify-center p-5">
       <div className="flex h-full max-h-[40rem] w-full max-w-[64rem] overflow-hidden rounded-2xl bg-card shadow-2xl">
@@ -45,4 +45,6 @@ export default function Page() {
       </div>
     </main>
   );
-}
+};
+
+export default SignUpPage;

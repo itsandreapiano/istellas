@@ -13,7 +13,7 @@ import UserAvatar from "@/components/UserAvatar";
 
 import "./styles.css";
 
-export default function PostEditor() {
+const PostEditor = () => {
   const { user } = useSession();
 
   const editor = useEditor({
@@ -58,4 +58,6 @@ export default function PostEditor() {
       </div>
     </div>
   );
-}
+};
+
+export default PostEditor;

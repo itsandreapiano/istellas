@@ -8,8 +8,7 @@ import UserAvatar from "../UserAvatar";
 interface PostProps {
   post: PostData;
 }
-
-export default function Post({ post }: PostProps) {
+const Post = ({ post }: PostProps) => {
   return (
     <article className="space-y-3 rounded-2xl bg-card p-5 shadow-sm">
       <div className="flex flex-wrap gap-3">
@@ -27,11 +26,13 @@ export default function Post({ post }: PostProps) {
             href={`/posts/${post.id}`}
             className="block text-sm text-muted-foreground hover:underline"
           >
-            {formatRelativeDate(post.createdAt)}
+            {/* {formatRelativeDate(post.createdAt)} */}
           </Link>
         </div>
       </div>
       <div className="whitespace-pre-line break-words">{post.content}</div>
     </article>
   );
-}
+};
+
+export default Post;

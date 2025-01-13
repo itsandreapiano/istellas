@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-export default function LoginForm() {
+const LoginForm = () => {
   const [error, setError] = React.useState<string>();
 
   const [isPending, startTransition] = React.useTransition();
@@ -84,4 +84,6 @@ export default function LoginForm() {
       </form>
     </Form>
   );
-}
+};
+
+export default LoginForm;

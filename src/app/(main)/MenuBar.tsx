@@ -8,7 +8,7 @@ interface MenuBarProps {
   className?: string;
 }
 
-export default function MenuBar({ className }: MenuBarProps) {
+const MenuBar = ({ className }: MenuBarProps) => {
   return (
     <div className={className}>
       <Button
@@ -57,4 +57,6 @@ export default function MenuBar({ className }: MenuBarProps) {
       </Button>
     </div>
   );
-}
+};
+
+export default MenuBar;

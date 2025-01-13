@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* //////// */
+/* //////// */
+/* //////// */
+/* Constant Colors */
 @layer base {
   :root {
     --background: 0, 0%, 95%;
@@ -13,9 +17,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    /* Buttons bg */
+    /* Buttons */
     --primary: 39 89% 54%;
-
     --primary-foreground: 355.7 100% 97.3%;
 
     --secondary: 40 4.8% 95.9%;
@@ -35,10 +38,6 @@
     --ring: 39 89% 54%;
 
     --radius: 1rem;
-  }
-
-  .logo-auth {
-    color: #f2a921;
   }
   .dark {
     --background: 20 14.3% 4.1%;
@@ -78,5 +77,18 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+/* //////// */
+/* //////// */
+/* //////// */
+/* Custom CSS */
+.logo-auth {
+  color: #f2a921;
+}
+
+@media (max-width: 768px) {
+  input {
+    font-size: 16px !important;
   }
 }
