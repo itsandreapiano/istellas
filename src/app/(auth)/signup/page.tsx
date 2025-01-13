@@ -5,7 +5,7 @@ import Link from "next/link";
 import signupImage from "@/assets/signup-image.jpg";
 
 import SignUpForm from "./SignUpForm";
-import Logo from "@/components/ui/logo";
+import Logo from "@/components/ui/Logo";
 
 export const metadata: Metadata = {
   title: "Sign Up",

@@ -1,7 +1,7 @@
 import SearchField from "@/components/SearchField";
 import UserButton from "@/components/UserButton";
 import Link from "next/link";
-import Logo from "../../components/ui/logo";
+import Logo from "../../components/ui/Logo";
 
 const Navbar = () => {
   return (
