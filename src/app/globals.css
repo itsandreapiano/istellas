@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* //////// */
-/* //////// */
-/* //////// */
-/* Constant Colors */
+/*  ////// */
+/*  Start Constant Colors ---> */
+/*  ////// */
 @layer base {
   :root {
-    --background: 0, 0%, 95%;
+    --background: 0, 0%, 93%;
     --foreground: 240 10% 3.9%;
+
+    --toaster-background: 0 0% 98%;
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -39,9 +40,12 @@
 
     --radius: 1rem;
   }
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
+
+    --toaster-background: 20 14.3% 4.1%;
 
     --card: 24 9.8% 10%;
     --card-foreground: 0 0% 95%;
@@ -79,10 +83,17 @@
     @apply bg-background text-foreground;
   }
 }
-/* //////// */
-/* //////// */
-/* //////// */
-/* Custom CSS */
+/*  ////// */
+/*  <--- End Constant Colors  */
+/*  ////// */
+
+/*  -  -  -  */
+/*  -  -  -  */
+/*  -  -  -  */
+
+/*  ////// */
+/*  Start Custom CSS ---> */
+/*  ////// */
 .logo-auth {
   color: #f2a921;
 }
@@ -92,3 +103,17 @@
     font-size: 16px !important;
   }
 }
+
+/* Toaster */
+.toast {
+  background-color: hsl(var(--toaster-background)) !important;
+}
+
+@layer components {
+  .toast-custom {
+    background-color: hsl(var(--toaster-background));
+  }
+}
+/*  ////// */
+/*  <--- End Custom CSS */
+/*  ////// */

@@ -14,6 +14,7 @@ import {
   UserIcon,
   Settings as SettingsIcon,
   SunMoon,
+  Database,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -61,6 +62,12 @@ const UserButton = ({ className }: UserButtonProps) => {
           <DropdownMenuItem>
             <UserIcon className="mr-2 size-4" />
             Profile
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/astro-db">
+          <DropdownMenuItem>
+            <Database className="mr-2 size-4" />
+            My Astro DB
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSub>

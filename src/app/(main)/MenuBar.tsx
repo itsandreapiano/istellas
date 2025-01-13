@@ -1,7 +1,5 @@
 import Link from "next/link";
-
-import { Bell, Bookmark, Home, Mail } from "lucide-react";
-
+import { Bell, Bookmark, Home, Mail, Database } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface MenuBarProps {
@@ -42,6 +40,17 @@ const MenuBar = ({ className }: MenuBarProps) => {
         <Link href="/messages">
           <Mail />
           <span className="hidden lg:inline">Messages</span>
+        </Link>
+      </Button>
+      <Button
+        variant="ghost"
+        className="flex items-center justify-start gap-3"
+        title="My Astro DB"
+        asChild
+      >
+        <Link href="/astro-db">
+          <Database />
+          <span className="hidden lg:inline">My Astro DB</span>
         </Link>
       </Button>
       <Button
