@@ -32,7 +32,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "./ui/DropdownMenu";
+} from "./ui/dropdownMenu";
 
 import UserAvatar from "./UserAvatar";
 

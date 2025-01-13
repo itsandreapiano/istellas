@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import loginImage from "@/assets/login-image.jpg";
 
-import Logo from "@/components/ui/Logo";
+import Logo from "@/components/ui/logo";
 
 import LoginForm from "./LoginForm";
 
