@@ -50,12 +50,12 @@ const UserButton = ({ className }: UserButtonProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="outline-none">
         <button className={cn("flex-none rounded-full", className)}>
           <UserAvatar avatarUrl={user.avatarUrl} size={40} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
         <DropdownMenuLabel>Hey, @{user.username}!</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <Link href={`/users/${user.username}`}>

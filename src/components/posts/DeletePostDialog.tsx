@@ -32,20 +32,14 @@ const DeletePostDialog = ({ post, open, onClose }: DeletePostDialogProps) => {
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete post?</DialogTitle>
+          <DialogTitle>Permanently delete post?</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this post? This action cannot be
-            undone.
+            Deleting this post will also delete all the associated likes and
+            comments. This can't be undone. If you need a record of the content,
+            take a screenshot before deleting it.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
-          <LoadingButton
-            variant="destructive"
-            onClick={() => mutation.mutate(post.id, { onSuccess: onClose })}
-            loading={mutation.isPending}
-          >
-            Delete
-          </LoadingButton>
+        <DialogFooter className="flex flex-col gap-2 sm:flex-row">
           <Button
             variant="outline"
             onClick={onClose}
@@ -53,6 +47,13 @@ const DeletePostDialog = ({ post, open, onClose }: DeletePostDialogProps) => {
           >
             Cancel
           </Button>
+          <LoadingButton
+            variant="destructive"
+            onClick={() => mutation.mutate(post.id, { onSuccess: onClose })}
+            loading={mutation.isPending}
+          >
+            Delete
+          </LoadingButton>
         </DialogFooter>
       </DialogContent>
     </Dialog>
