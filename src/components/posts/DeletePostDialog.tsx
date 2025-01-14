@@ -35,8 +35,8 @@ const DeletePostDialog = ({ post, open, onClose }: DeletePostDialogProps) => {
           <DialogTitle>Permanently delete post?</DialogTitle>
           <DialogDescription>
             Deleting this post will also delete all the associated likes and
-            comments. This can't be undone. If you need a record of the content,
-            take a screenshot before deleting it.
+            comments. This can&#39;t be undone. If you need a record of the
+            content, take a screenshot before deleting it.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex flex-col gap-2 sm:flex-row">
