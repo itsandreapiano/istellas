@@ -51,7 +51,7 @@ export function useSubmitPostMutation() {
       });
 
       toast({
-        description: "Post created",
+        description: "Post published!",
       });
     },
     onError(error) {

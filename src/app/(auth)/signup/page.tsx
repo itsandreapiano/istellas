@@ -21,9 +21,8 @@ const SignUpPage = () => {
               Sign up to <Logo />
             </h1>
             <p className="text-muted-foreground">
-              The first{" "}
-              <span className="font-bold italic text-gray-500">proper</span>{" "}
-              astrology social media app.
+              The first <span className="italic">proper</span> astrology social
+              media app.
             </p>
           </div>
           <div className="space-y-5">
