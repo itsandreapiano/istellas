@@ -1,6 +1,6 @@
 "use server";
 
-import { postDataInclude } from "@/lib/types";
+import { getPostDataInclude } from "@/lib/types";
 
 import { validateRequest } from "@/auth";
 
@@ -19,7 +19,7 @@ export async function submitPost(input: string) {
       content,
       userId: user.id,
     },
-    include: postDataInclude,
+    include: getPostDataInclude(user.id),
   });
 
   return newPost;

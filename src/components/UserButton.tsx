@@ -15,6 +15,7 @@ import {
   Settings as SettingsIcon,
   SunMoon,
   Database,
+  Globe,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -55,7 +56,7 @@ const UserButton = ({ className }: UserButtonProps) => {
           <UserAvatar avatarUrl={user.avatarUrl} size={40} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
+      <DropdownMenuContent className="shadow-[0_3px_12px_rgba(0,0,0,0.25)]">
         <DropdownMenuLabel>Hey, @{user.username}!</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <Link href={`/users/${user.username}`}>
@@ -98,6 +99,70 @@ const UserButton = ({ className }: UserButtonProps) => {
                       <Moon className="mr-2 size-4" />
                       Dark mode
                       {theme === "dark" && <Check className="ms-2 size-4" />}
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <Globe className="mr-2 size-4" />
+                  <span>Language</span>
+                  <span className="ml-2" aria-hidden="true"></span>
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      العربية <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      中文 <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Deutsch <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      English <Check className="ms-2 size-4" />
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Español <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Esperanto
+                      <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Ελληνικά
+                      <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Français
+                      <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Italiano
+                      <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      日本語 <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Latīna <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Polski <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Português
+                      <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Русский <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Sardu <span className="ml-1 italic">(coming soon)</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="pointer-events-none text-gray-400">
+                      Türkçe <span className="ml-1 italic">(coming soon)</span>
                     </DropdownMenuItem>
                   </DropdownMenuSubContent>
                 </DropdownMenuPortal>

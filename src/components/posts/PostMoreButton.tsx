@@ -28,7 +28,7 @@ const PostMoreButton = ({ post }: PostMoreButtonProps) => {
             <MoreHorizontal className="size-5 text-muted-foreground" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="relative bottom-2 right-12 shadow-[0_2px_15px_rgba(0,0,0,0.25)]">
+        <DropdownMenuContent className="relative bottom-2 right-12 shadow-[0_5px_15px_rgba(0,0,0,0.25)]">
           <DropdownMenuItem onClick={() => setShowDeleteDialog(true)}>
             <span className="flex items-center gap-2 px-1 py-1 text-foreground">
               <Trash2 className="size-4" />

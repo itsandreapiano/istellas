@@ -98,6 +98,14 @@
   color: #f2a921;
 }
 
+/* Placeholder post editor, where tablet */
+@media (max-width: 815px) and (min-width: 769px) {
+  .post-editor {
+    height: 72px;
+  }
+}
+
+/* Size for mobile devices, to avoid zooming */
 @media (max-width: 768px) {
   input {
     font-size: 16px !important;
