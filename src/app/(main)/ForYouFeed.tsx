@@ -12,7 +12,7 @@ import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 import Post from "@/components/posts/Post";
 import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 
-const Feed = () => {
+const ForYouFeed = () => {
   const {
     data,
     fetchNextPage,
@@ -68,4 +68,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default ForYouFeed;
