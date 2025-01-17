@@ -1,5 +1,13 @@
 import Link from "next/link";
-import { Bell, Bookmark, Home, Mail, Database } from "lucide-react";
+import {
+  Bell,
+  Bookmark,
+  Home,
+  Mail,
+  Database,
+  Heart,
+  UserIcon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface MenuBarProps {
@@ -27,7 +35,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
         asChild
       >
         <Link href="/notifications">
-          <Bell />
+          <Heart />
           <span className="hidden lg:inline">Notifications</span>
         </Link>
       </Button>

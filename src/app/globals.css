@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/*  ////// */
+/*  //////  */
 /*  Start Constant Colors ---> */
-/*  ////// */
+/*  //////  */
 @layer base {
   :root {
     --background: 0, 0%, 93%;
@@ -19,8 +19,11 @@
     --popover-foreground: 240 10% 3.9%;
 
     /* Buttons */
-    --primary: 39 89% 54%;
+    --primary: 39 90% 54%;
     --primary-foreground: 0 0% 100%;
+
+    --secondary-btn-bg: 210 13% 90%;
+    --secondary-btn-bghover: 210 9% 85%;
 
     --secondary: 40 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -36,13 +39,14 @@
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 39 89% 54%;
+    --ring: 39 90% 54%;
 
     --radius: 1rem;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
+    --background: 220 14% 5%;
+
     --foreground: 0 0% 95%;
 
     --toaster-background: 20 14.3% 4.1%;
@@ -54,8 +58,11 @@
     --popover-foreground: 0 0% 95%;
 
     /* Buttons bg */
-    --primary: 39 89% 54%;
+    --primary: 39 90% 54%;
     --primary-foreground: 144.9 80.4% 10%;
+
+    --secondary-btn-bg: 216 4.6% 18%;
+    --secondary-btn-bghover: 216 4.6% 25%;
 
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -71,7 +78,7 @@
 
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 39 89% 54%;
+    --ring: 39 90% 54%;
   }
 }
 
@@ -83,7 +90,7 @@
     @apply bg-background text-foreground;
   }
 }
-/*  ////// */
+/*  //////  */
 /*  <--- End Constant Colors  */
 /*  ////// */
 
@@ -91,11 +98,15 @@
 /*  -  -  -  */
 /*  -  -  -  */
 
-/*  ////// */
+/*  //////  */
 /*  Start Custom CSS ---> */
-/*  ////// */
-.logo-auth {
-  color: #f2a921;
+/*  //////  */
+
+.astro-silver {
+  color: #959ba3;
+}
+.astro-gold {
+  color: hsl(var(--primary));
 }
 
 /* Placeholder post editor, where tablet */
@@ -117,6 +128,15 @@
   background-color: hsl(var(--toaster-background)) !important;
 }
 
+/* Secondary buttons */
+.secondary-btn-bg {
+  background-color: hsl(var(--secondary-btn-bg));
+}
+
+.secondary-btn-bg:hover {
+  background-color: hsl(var(--secondary-btn-bghover)) !important;
+}
+
 @layer components {
   .toast-custom {
     background-color: hsl(var(--toaster-background));
@@ -126,6 +146,6 @@
 .btn-post-more:focus {
   border: 2px solid red;
 }
-/*  ////// */
+/*  //////  */
 /*  <--- End Custom CSS */
-/*  ////// */
+/*  //////  */

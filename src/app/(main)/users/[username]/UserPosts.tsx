@@ -12,7 +12,13 @@ import PostsLoadingSkeleton from "@/components/posts/PostsLoadingSkeleton";
 
 import { Loader2 } from "lucide-react";
 
-const FollowingFeed = () => {
+interface UserPostsProps {
+  userId: string;
+  currentUser: string;
+  name: string;
+}
+
+const UserPosts = ({ userId, currentUser, name }: UserPostsProps) => {
   const {
     data,
     fetchNextPage,
@@ -21,11 +27,11 @@ const FollowingFeed = () => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["post-feed", "following"],
+    queryKey: ["post-feed", "user-posts", userId],
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/following",
+          `/api/users/${userId}/posts`,
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
@@ -40,12 +46,19 @@ const FollowingFeed = () => {
   }
 
   if (status === "success" && !posts.length && !hasNextPage) {
-    return (
-      <p className="mt-6 text-center text-sm text-muted-foreground md:mt-4">
-        No posts found. <br />
-        Follow someone to start seeing their posts here.
-      </p>
-    );
+    const message =
+      currentUser === userId ? (
+        <>
+          So far, you haven&apos;t posted anything. <br />
+          Share a thought <b>now.</b>
+        </>
+      ) : (
+        <>
+          So far, <b>{name}</b> hasn&apos;t posted anything.
+        </>
+      );
+
+    return <p className="text-center text-muted-foreground">{message}</p>;
   }
 
   if (status === "error") {
@@ -69,4 +82,4 @@ const FollowingFeed = () => {
   );
 };
 
-export default FollowingFeed;
+export default UserPosts;

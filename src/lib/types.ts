@@ -6,6 +6,8 @@ export function getUserDataSelect(loggedInUserId: string) {
     username: true,
     displayName: true,
     avatarUrl: true,
+    bio: true,
+    createdAt: true,
     // Future reminder:
     // I could include the DOB here, to have the zodiac sign symbol next to the username in the posts.
     followers: {
@@ -18,11 +20,16 @@ export function getUserDataSelect(loggedInUserId: string) {
     },
     _count: {
       select: {
+        posts: true,
         followers: true,
       },
     },
   } satisfies Prisma.UserSelect;
 }
+
+export type UserData = Prisma.UserGetPayload<{
+  select: ReturnType<typeof getUserDataSelect>;
+}>;
 
 export function getPostDataInclude(loggedInUserId: string) {
   return {
