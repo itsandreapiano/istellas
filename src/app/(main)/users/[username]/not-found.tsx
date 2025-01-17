@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
   return (
-    <main className="flex min-h-screen w-full flex-col items-center space-y-6 pt-10 text-center">
+    <main className="flex w-full flex-col items-center space-y-6 pt-10 text-center">
       <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">
         404. That&apos;s an error.
       </h1>

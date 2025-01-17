@@ -5,7 +5,7 @@ import Logo from "@/components/ui/Logo";
 
 const NotFound = () => {
   return (
-    <main className="flex min-h-screen w-full flex-col items-center justify-center space-y-6 pb-7 text-center">
+    <main className="flex min-h-screen w-full flex-col items-center justify-center space-y-6 pb-2 text-center">
       <div className="flex w-full max-w-7xl flex-col items-center justify-center px-5 py-3">
         <Link
           href="/"
