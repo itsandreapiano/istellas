@@ -56,7 +56,7 @@ const UserButton = ({ className }: UserButtonProps) => {
           <UserAvatar avatarUrl={user.avatarUrl} size={40} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="shadow-[0_2px_11px_rgba(0,0,0,0.25)]">
+      <DropdownMenuContent className="shadow-[0_1px_10px_rgba(0,0,0,0.25)]">
         <DropdownMenuLabel>Hey, @{user.username}!</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <Link href={`/users/${user.username}`}>
