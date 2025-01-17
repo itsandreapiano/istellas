@@ -54,7 +54,7 @@ async function WhoToFollow() {
       <div className="text-xl font-bold">Who to follow</div>
 
       {usersToFollow.map((user) => (
-        <UserTooltip user={user}>
+        <UserTooltip user={user} key={user.id}>
           <div
             key={user.id}
             className="flex items-center justify-between gap-3"
@@ -121,8 +121,8 @@ async function TrendingTopics() {
         const title = hashtag.split("#")[1];
 
         return (
-          <div className="block">
-            <Link key={title} href={`/hashtag/${title}`}>
+          <div className="block" key={title}>
+            <Link href={`/hashtag/${title}`}>
               <p
                 className="line-clamp-1 break-all font-semibold text-foreground"
                 title={hashtag}
