@@ -77,7 +77,7 @@ const ProfilePage = async ({ params: { username } }: PageProps) => {
 
         <div className="rounded-2xl bg-card p-5 shadow-sm">
           <h2 className="text-center text-2xl font-bold">
-            {user.displayName}'s Thoughts
+            {user.displayName}&apos;s Thoughts
           </h2>
         </div>
         <UserPosts

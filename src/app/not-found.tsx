@@ -15,7 +15,7 @@ const NotFound = () => {
         </Link>
       </div>
       <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">
-        404. That's an error.
+        404. That&apos;s an error.
       </h1>
       <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
         Page Not Found

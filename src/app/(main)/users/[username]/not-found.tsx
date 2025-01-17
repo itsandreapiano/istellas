@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <main className="flex min-h-screen w-full flex-col items-center space-y-6 pt-10 text-center">
       <h1 className="text-4xl font-extrabold sm:text-5xl lg:text-6xl">
-        404. That's an error.
+        404. That&apos;s an error.
       </h1>
       <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
         Page Not Found
