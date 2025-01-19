@@ -75,6 +75,16 @@ const EditProfileDialog = ({
     }
   }, [open, user, form]);
 
+  // Rewrite correct URL for production, as uploadthing generates a different root link when we upload from production.
+  const rewriteUploadthingURL = (url: string | null | undefined) => {
+    if (url && /^https:\/\/[a-z0-9\-]+\.ufs\.sh/.test(url)) {
+      return url.replace(/^https:\/\/[a-z0-9\-]+\.ufs\.sh/, "https://utfs.io");
+    }
+    return url;
+  };
+
+  const imageUrl = rewriteUploadthingURL(user.avatarUrl);
+
   const onSubmit = async (values: UpdateUserProfileValues) => {
     const newAvatarFile = croppedAvatar
       ? new File([croppedAvatar], `avatar_${user.id}.webp`)
@@ -106,7 +116,7 @@ const EditProfileDialog = ({
             src={
               croppedAvatar
                 ? URL.createObjectURL(croppedAvatar)
-                : user.avatarUrl || avatarPlaceholder
+                : imageUrl || avatarPlaceholder
             }
             onImageCropped={setCroppedAvatar}
           />
@@ -180,8 +190,8 @@ function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
 
     Resizer.imageFileResizer(
       image,
-      1024,
-      1024,
+      2048,
+      2048,
       "WEBP",
       100,
       0,

@@ -10,16 +10,12 @@ import { formatNumber } from "@/lib/utils";
 
 import { validateRequest } from "@/auth";
 
-import { formatDate } from "date-fns";
-
 import FollowButton from "@/components/FollowButton";
 import FollowerCount from "@/components/FollowerCount";
 import TrendsSidebar from "@/components/TrendsSidebar";
-import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
 import UserPosts from "./UserPosts";
 
-import { Pencil } from "lucide-react";
 import PostEditor from "@/components/posts/editor/PostEditor";
 import Linkify from "@/components/Linkify";
 
