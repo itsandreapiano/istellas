@@ -195,7 +195,7 @@ function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
       isMobile ? 512 : 1024,
       isMobile ? 512 : 1024,
       "WEBP",
-      isMobile ? 80 : 100,
+      100,
       0,
       (uri) => setImageToCrop(uri as File),
       "file",
