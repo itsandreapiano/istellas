@@ -45,12 +45,12 @@ const CropImageDialog = ({
           src={src}
           aspectRatio={cropAspectRatio}
           guides={false}
-          zoomable={false}
+          zoomable
           ref={cropperRef}
           className="mx-auto size-fit"
           background={false}
         />
-        <DialogFooter className="gap-2">
+        <DialogFooter>
           <Button variant="secondary" onClick={onClose}>
             Cancel
           </Button>
