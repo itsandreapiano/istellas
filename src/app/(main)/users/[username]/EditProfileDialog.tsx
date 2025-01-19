@@ -188,12 +188,14 @@ function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
   function onImageSelected(image: File | undefined) {
     if (!image) return;
 
+    const isMobile = /iPhone|iPad|iPod|Android/.test(navigator.userAgent);
+
     Resizer.imageFileResizer(
       image,
-      2048,
-      2048,
+      isMobile ? 512 : 1024,
+      isMobile ? 512 : 1024,
       "WEBP",
-      100,
+      isMobile ? 80 : 100,
       0,
       (uri) => setImageToCrop(uri as File),
       "file",
