@@ -25,7 +25,7 @@ const PostEditor = () => {
         italic: false,
       }),
       Placeholder.configure({
-        placeholder: "What's on your transits today?",
+        placeholder: `What's on your transits today? 🪐`,
       }),
     ],
   });
@@ -45,6 +45,7 @@ const PostEditor = () => {
 
   return (
     <div className="flex flex-col gap-5 rounded-2xl bg-card p-5 shadow-sm">
+      <div className="text-xl font-bold">Share a Thought</div>
       <div className="flex gap-5">
         <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
         <EditorContent
@@ -59,7 +60,7 @@ const PostEditor = () => {
           disabled={!input.trim()}
           className="min-w-20"
         >
-          Post
+          Share
         </LoadingButton>
       </div>
     </div>

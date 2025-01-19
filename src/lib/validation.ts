@@ -32,3 +32,13 @@ export const createPostSchema = z.object({
     "You can't submit an empty post. Please write something.",
   ),
 });
+
+export const updateUserProfileSchema = z.object({
+  displayName: nonEmptyString("Please choose a name.").regex(
+    /^[A-Z][a-z]+(?: [A-Z][a-z]+)*$/,
+    "Please choose a valid first name or alias.",
+  ),
+  bio: z.string().max(200, "Bio must not exceed 200 characters."),
+});
+
+export type UpdateUserProfileValues = z.infer<typeof updateUserProfileSchema>;

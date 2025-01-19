@@ -32,7 +32,8 @@ const Post = ({ post }: PostProps) => {
                 href={`/users/${post.user.username}`}
                 className="block font-medium"
               >
-                {post.user.displayName}
+                {post.user.displayName}{" "}
+                {post.user.username === "andreapiano" && "♔"}
               </Link>
             </UserTooltip>
             <Link

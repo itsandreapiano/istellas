@@ -16,6 +16,7 @@ interface MenuBarProps {
 
 const MenuBar = ({ className }: MenuBarProps) => {
   const { user } = useSession();
+
   const pathname = usePathname();
 
   const isCurrentUserRoute = pathname === `/users/${user.username}`;
@@ -29,7 +30,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
         asChild
       >
         <Link href="/">
-          <Home />
+          <Home className="size-[25px]" />
           <span className="hidden lg:inline">Home</span>
         </Link>
       </Button>
@@ -40,7 +41,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
         asChild
       >
         <Link href="/notifications">
-          <Heart />
+          <Heart className="size-[25px]" />
           <span className="hidden lg:inline">Notifications</span>
         </Link>
       </Button>
@@ -51,7 +52,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
         asChild
       >
         <Link href="/messages">
-          <Mail />
+          <Mail className="size-[25px]" />
           <span className="hidden lg:inline">Messages</span>
         </Link>
       </Button>
@@ -62,19 +63,19 @@ const MenuBar = ({ className }: MenuBarProps) => {
         asChild
       >
         <Link href="/astro-charts">
-          <DraftingCompass />
+          <DraftingCompass className="size-[25px]" />
           <span className="hidden lg:inline">Astro Charts</span>
         </Link>
       </Button>
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
-        title="My Charts"
+        title="Profile"
         asChild
       >
         <Link href={`/users/${user.username}`}>
           <div className="relative">
-            <UserAvatar avatarUrl={user.avatarUrl} size={25} />
+            <UserAvatar avatarUrl={user.avatarUrl} size={27} />
             {isCurrentUserRoute && (
               <div className="absolute inset-0 rounded-full border-2 border-foreground" />
             )}

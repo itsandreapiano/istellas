@@ -49,7 +49,10 @@ const UserTooltip = ({ children, user }: UserTooltipProps) => {
             </div>
             <div>
               <Link href={`/users/${user.username}`}>
-                <div className="text-lg font-semibold">{user.displayName}</div>
+                <div className="text-lg font-semibold">
+                  {user.displayName}
+                  {user.username === "andreapiano" && " ♔"}
+                </div>
                 <div className="text-muted-foreground">@{user.username}</div>
               </Link>
             </div>

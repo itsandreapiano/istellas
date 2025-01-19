@@ -16,11 +16,14 @@ import {
   Globe,
   Bookmark,
   UserCog,
+  Key,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 import { logout } from "@/app/(auth)/actions";
+
+import { useSession } from "@/app/(main)/SessionProvider";
 
 import {
   DropdownMenu,
@@ -40,6 +43,8 @@ interface MenuButtonProps {
 }
 
 const MenuButton = ({ className }: MenuButtonProps) => {
+  const { user } = useSession();
+
   const { theme, setTheme } = useTheme();
 
   const queryClient = useQueryClient();
@@ -48,7 +53,7 @@ const MenuButton = ({ className }: MenuButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="outline-none">
         <button className={cn("flex-none rounded-full", className)}>
-          <UserCog size={31} />
+          <UserCog size={28} />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="px-1 py-1 shadow-[0_1px_10px_rgba(0,0,0,0.25)]">
@@ -94,7 +99,7 @@ const MenuButton = ({ className }: MenuButtonProps) => {
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Globe className="mr-2 size-4" />
-            <span className="mr-3">Languages</span>
+            <span className="mr-4">Languages</span>
             <span aria-hidden="true"></span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
@@ -156,6 +161,10 @@ const MenuButton = ({ className }: MenuButtonProps) => {
           </DropdownMenuPortal>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
+
+        <DropdownMenuItem className="astro-silver pointer-events-none mt-2 pr-2 text-xs font-bold">
+          <Key className="mr-2 size-4 text-foreground" />@{user.username}
+        </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             queryClient.clear();

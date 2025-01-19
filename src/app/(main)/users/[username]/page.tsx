@@ -23,6 +23,8 @@ import { Pencil } from "lucide-react";
 import PostEditor from "@/components/posts/editor/PostEditor";
 import Linkify from "@/components/Linkify";
 
+import EditProfileButton from "./EditProfileButton";
+
 interface PageProps {
   params: { username: string };
 }
@@ -78,7 +80,8 @@ const ProfilePage = async ({ params: { username } }: PageProps) => {
 
         <div className="rounded-2xl bg-card p-5 shadow-sm">
           <h2 className="text-center text-2xl font-bold">
-            {user.displayName}&apos;s Thoughts
+            {/* Thoughts of a Virgo */}
+            Thoughts of {user.displayName}
           </h2>
         </div>
         <UserPosts
@@ -115,13 +118,16 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
       <div className="flex flex-wrap gap-3 sm:flex-nowrap">
         <div className="me-auto space-y-3">
           <div>
-            <h1 className="text-3xl font-bold">{user.displayName}</h1>
+            <h1 className="text-3xl font-bold">
+              {user.displayName}
+              {user.username === "andreapiano" && " ♔"}
+            </h1>
             <div className="text-muted-foreground">@{user.username}</div>
           </div>
-          <div>Stellar since: {formatDate(user.createdAt, "MMM d, yyyy")}</div>
+          {/* <div>Stellar since: {formatDate(user.createdAt, "MMM d, yyyy")}</div> */}
           <div className="flex items-center gap-3">
             <span>
-              Posts:{" "}
+              Thoughts:{" "}
               <span className="font-semibold">
                 {formatNumber(user._count.posts)}
               </span>
@@ -133,10 +139,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
           </div>
         </div>
         {user.id === loggedInUserId ? (
-          <Button className="secondary-btn-bg hover:secondary-btn-bghover text-foreground">
-            <Pencil size="14" className="mr-2" />
-            Edit profile
-          </Button>
+          <EditProfileButton user={user} />
         ) : (
           <FollowButton userId={user.id} initialState={followerInfo} />
         )}
