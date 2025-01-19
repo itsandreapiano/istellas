@@ -77,7 +77,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
           <div className="relative">
             <UserAvatar avatarUrl={user.avatarUrl} size={27} />
             {isCurrentUserRoute && (
-              <div className="absolute inset-0 rounded-full border-2 border-foreground" />
+              <div className="absolute inset-0 rounded-full border-[1.9px] border-foreground" />
             )}
           </div>
           <span className="ml-[-0.2px] hidden lg:inline">Profile</span>
