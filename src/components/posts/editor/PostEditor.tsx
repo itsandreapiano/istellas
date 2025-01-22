@@ -216,28 +216,18 @@ function AttachmentPreview({
   return (
     <div
       className={cn(
-        "relative mx-auto md:max-w-full",
+        "mobile:max-w-full relative mx-auto",
         isUploading && "opacity-50",
       )}
     >
-      {/* className={cn("relative mx-auto size-fit", isUploading && "opacity-50")} */}
-
-      {/* <div className="relative mx-auto max-w-full"> */}
       {file.type.startsWith("image") ? (
-        //   <Image
-        //   src={src}
-        //   alt="Attachment preview"
-        //   width={500}
-        //   height={500}
-        //   className="w-full max-h-[30rem] object-contain rounded-2xl"
-        // />
         <Image
           src={src}
           alt="Attachment preview"
           width={500}
           height={500}
           priority
-          className="mx-auto h-auto max-h-screen w-auto rounded-2xl md:max-h-[30rem] md:w-full md:object-contain"
+          className="mobile:max-h-[30rem] mobile:w-full mobile:object-contain mx-auto h-auto max-h-screen w-auto rounded-2xl"
         />
       ) : (
         <video controls className="size-fit max-h-[30rem] rounded-2xl">

@@ -192,8 +192,8 @@ const AvatarInput = ({ src, onImageCropped }: AvatarInputProps) => {
 
     Resizer.imageFileResizer(
       image,
-      isMobile ? 400 : 2048,
-      isMobile ? 400 : 2048,
+      isMobile ? 512 : 2048,
+      isMobile ? 512 : 2048,
       "WEBP",
       100,
       0,
