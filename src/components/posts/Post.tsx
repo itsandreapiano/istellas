@@ -110,7 +110,7 @@ function MediaPreview({ media }: MediaPreviewProps) {
         width={500}
         height={500}
         priority
-        className="mx-auto size-fit max-h-[30rem] rounded-2xl"
+        className="mx-auto h-auto max-h-screen w-auto rounded-2xl md:max-h-[30rem] md:w-full md:object-contain"
       />
     );
   }

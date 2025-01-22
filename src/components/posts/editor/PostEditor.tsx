@@ -214,16 +214,23 @@ function AttachmentPreview({
   const src = URL.createObjectURL(file);
 
   return (
-    <div
-      className={cn("relative mx-auto max-w-full", isUploading && "opacity-50")}
-    >
+    <div className="relative mx-auto md:max-w-full">
+      {/* <div className="relative mx-auto max-w-full"> */}
       {file.type.startsWith("image") ? (
+        //   <Image
+        //   src={src}
+        //   alt="Attachment preview"
+        //   width={500}
+        //   height={500}
+        //   className="w-full max-h-[30rem] object-contain rounded-2xl"
+        // />
         <Image
           src={src}
           alt="Attachment preview"
           width={500}
           height={500}
-          className="max-h-[30rem] w-full rounded-2xl object-contain"
+          priority
+          className="mx-auto h-auto max-h-screen w-auto rounded-2xl md:max-h-[30rem] md:w-full md:object-contain"
         />
       ) : (
         <video controls className="size-fit max-h-[30rem] rounded-2xl">
