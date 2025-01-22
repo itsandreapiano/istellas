@@ -104,14 +104,16 @@ function MediaPreview({ media }: MediaPreviewProps) {
     console.log("THIS IS MEDIA URL ---> ", media.url);
 
     return (
-      <Image
-        src={imageUrl}
-        alt="Attachment"
-        width={500}
-        height={500}
-        priority
-        className="mx-auto h-auto max-h-screen w-auto rounded-2xl md:max-h-[30rem] md:w-full md:object-contain"
-      />
+      <div className="mx-auto">
+        <Image
+          src={imageUrl}
+          alt="Attachment"
+          width={500}
+          height={500}
+          priority
+          className="mx-auto h-auto max-h-screen w-auto rounded-2xl md:max-h-[30rem] md:w-full md:object-contain"
+        />
+      </div>
     );
   }
 

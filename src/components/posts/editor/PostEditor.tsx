@@ -214,7 +214,14 @@ function AttachmentPreview({
   const src = URL.createObjectURL(file);
 
   return (
-    <div className="relative mx-auto md:max-w-full">
+    <div
+      className={cn(
+        "relative mx-auto md:max-w-full",
+        isUploading && "opacity-50",
+      )}
+    >
+      {/* className={cn("relative mx-auto size-fit", isUploading && "opacity-50")} */}
+
       {/* <div className="relative mx-auto max-w-full"> */}
       {file.type.startsWith("image") ? (
         //   <Image
