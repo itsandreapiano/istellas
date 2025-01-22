@@ -8,7 +8,7 @@ import { useSession } from "./SessionProvider";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
 
-import { Home, Mail, Heart, DraftingCompass } from "lucide-react";
+import { Home, Mail, Bell, DraftingCompass, Send } from "lucide-react";
 
 interface MenuBarProps {
   className?: string;
@@ -37,22 +37,11 @@ const MenuBar = ({ className }: MenuBarProps) => {
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
-        title="Notifications"
-        asChild
-      >
-        <Link href="/notifications">
-          <Heart className="size-[25px]" />
-          <span className="hidden lg:inline">Notifications</span>
-        </Link>
-      </Button>
-      <Button
-        variant="ghost"
-        className="flex items-center justify-start gap-3"
         title="Messages"
         asChild
       >
         <Link href="/messages">
-          <Mail className="size-[25px]" />
+          <Send className="size-[25px]" />
           <span className="hidden lg:inline">Messages</span>
         </Link>
       </Button>
@@ -65,6 +54,17 @@ const MenuBar = ({ className }: MenuBarProps) => {
         <Link href="/astro-charts">
           <DraftingCompass className="size-[25px]" />
           <span className="hidden lg:inline">Astro Charts</span>
+        </Link>
+      </Button>
+      <Button
+        variant="ghost"
+        className="flex items-center justify-start gap-3"
+        title="Notifications"
+        asChild
+      >
+        <Link href="/notifications">
+          <Bell className="size-[25px]" />
+          <span className="hidden lg:inline">Notifications</span>
         </Link>
       </Button>
       <Button

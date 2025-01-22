@@ -45,7 +45,7 @@ const CropImageDialog = ({
           src={src}
           aspectRatio={cropAspectRatio}
           guides={false}
-          zoomable
+          zoomable={false}
           ref={cropperRef}
           className="mx-auto size-fit"
           background={false}

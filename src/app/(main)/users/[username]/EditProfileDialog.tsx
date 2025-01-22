@@ -180,27 +180,27 @@ interface AvatarInputProps {
   onImageCropped: (blob: Blob | null) => void;
 }
 
-function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
+const AvatarInput = ({ src, onImageCropped }: AvatarInputProps) => {
   const [imageToCrop, setImageToCrop] = React.useState<File>();
 
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
-  function onImageSelected(image: File | undefined) {
+  const onImageSelected = (image: File | undefined) => {
     if (!image) return;
 
     const isMobile = /iPhone|iPad|iPod|Android/.test(navigator.userAgent);
 
     Resizer.imageFileResizer(
       image,
-      isMobile ? 512 : 1024,
-      isMobile ? 512 : 1024,
+      isMobile ? 400 : 2048,
+      isMobile ? 400 : 2048,
       "WEBP",
       100,
       0,
       (uri) => setImageToCrop(uri as File),
       "file",
     );
-  }
+  };
 
   return (
     <>
@@ -242,4 +242,4 @@ function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
       )}
     </>
   );
-}
+};

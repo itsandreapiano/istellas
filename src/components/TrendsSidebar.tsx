@@ -51,7 +51,7 @@ async function WhoToFollow() {
 
   return (
     <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
-      <div className="text-xl font-bold">Who to follow</div>
+      <div className="text-xl font-bold">Suggestions</div>
 
       {usersToFollow.map((user) => (
         <UserTooltip user={user} key={user.id}>
@@ -117,7 +117,7 @@ async function TrendingTopics() {
 
   return (
     <div className="space-y-5 rounded-2xl bg-card p-5 shadow-sm">
-      <div className="text-xl font-bold">Trending topics</div>
+      <div className="text-xl font-bold">Trends</div>
       {trendingTopics.map(({ hashtag, count }) => {
         const title = hashtag.split("#")[1];
 

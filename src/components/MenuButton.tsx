@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
@@ -17,6 +18,17 @@ import {
   Bookmark,
   UserCog,
   Key,
+  Sparkles,
+  Heart,
+  MessageCircleHeart,
+  HeartOff,
+  Hash,
+  UserPlus,
+  Info,
+  HeartHandshake,
+  BookLock,
+  HelpCircle,
+  LifeBuoy,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -57,7 +69,9 @@ const MenuButton = ({ className }: MenuButtonProps) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="px-1 py-1 shadow-[0_1px_10px_rgba(0,0,0,0.25)]">
-        <DropdownMenuLabel>Activity & Settings</DropdownMenuLabel>
+        <DropdownMenuLabel className="text-md px-12 text-center text-[14px] md:px-14">
+          Activity & Settings
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {/* <Link href={`/users/${user.username}`}>
           <DropdownMenuItem>
@@ -71,6 +85,42 @@ const MenuButton = ({ className }: MenuButtonProps) => {
             Bookmarks
           </DropdownMenuItem>
         </Link>
+        <Link href="/stelliums">
+          <DropdownMenuItem>
+            <Sparkles className="mr-2 size-4" /> Stelliums
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/trending-topics">
+          <DropdownMenuItem>
+            <Hash className="mr-2 size-4" /> Trending topics
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/who-to-follow">
+          <DropdownMenuItem>
+            <UserPlus className="ml-[2px] mr-[7.7px] size-4" /> Who to follow
+          </DropdownMenuItem>
+        </Link>
+        <DropdownMenuSeparator />
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
+            <MessageCircleHeart className="mr-2 size-4" />
+            Dating Mood
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem className="pointer-events-none text-gray-400">
+                <HeartOff className="mr-2 size-4" />
+                Not interested
+                {/* {<Check className="ms-2 size-4" />} */}
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Heart className="mr-2 size-4" />
+                Open to it
+                {<Check className="ms-2 size-4" />}
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <SunMoon className="mr-2 size-4" />
@@ -80,7 +130,7 @@ const MenuButton = ({ className }: MenuButtonProps) => {
             <DropdownMenuSubContent>
               <DropdownMenuItem onClick={() => setTheme("system")}>
                 <Monitor className="mr-2 size-4" />
-                System default
+                System
                 {theme === "system" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("light")}>
@@ -99,67 +149,93 @@ const MenuButton = ({ className }: MenuButtonProps) => {
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Globe className="mr-2 size-4" />
-            <span className="mr-4">Languages</span>
+            <span>Languages</span>
             <span aria-hidden="true"></span>
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                العربية <span className="ml-1 italic">(coming soon)</span>
+                AR - العربية <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                中文 <span className="ml-1 italic">(coming soon)</span>
+                ZH - 中文 <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Deutsch <span className="ml-1 italic">(coming soon)</span>
+                DE - Deutsch <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                English <Check className="ms-2 size-4" />
+                EN - English <Check className="ms-2 size-4" />
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Español <span className="ml-1 italic">(coming soon)</span>
+                ES - Español <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Esperanto
-                <span className="ml-1 italic">(coming soon)</span>
+                EO - Esperanto
+                <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Ελληνικά
-                <span className="ml-1 italic">(coming soon)</span>
+                EL - Ελληνικά
+                <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Français
-                <span className="ml-1 italic">(coming soon)</span>
+                FR -Français
+                <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Italiano
-                <span className="ml-1 italic">(coming soon)</span>
+                IT - Italiano
+                <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                日本語 <span className="ml-1 italic">(coming soon)</span>
+                JA - 日本語 <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Latīna <span className="ml-1 italic">(coming soon)</span>
+                LA - Latīna <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Polski <span className="ml-1 italic">(coming soon)</span>
+                PL - Polski <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Português
-                <span className="ml-1 italic">(coming soon)</span>
+                PT - Português
+                <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Русский <span className="ml-1 italic">(coming soon)</span>
+                RU - Русский <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Sardu <span className="ml-1 italic">(coming soon)</span>
+                SC - Sardu <span className="ml-1 italic"></span>
               </DropdownMenuItem>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                Türkçe <span className="ml-1 italic">(coming soon)</span>
+                TR - Türkçe <span className="ml-1 italic"></span>
               </DropdownMenuItem>
             </DropdownMenuSubContent>
           </DropdownMenuPortal>
         </DropdownMenuSub>
+
+        <DropdownMenuSeparator />
+
+        <Link href="/about">
+          <DropdownMenuItem>
+            <Info className="mr-2 size-4" /> About
+          </DropdownMenuItem>
+        </Link>
+
+        <Link href="/help">
+          <DropdownMenuItem>
+            <LifeBuoy className="mr-2 size-4" /> Help
+          </DropdownMenuItem>
+        </Link>
+
+        <Link href="/privacy">
+          <DropdownMenuItem>
+            <BookLock className="mr-2 size-4" /> Privacy
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/support-us">
+          <DropdownMenuItem>
+            <HeartHandshake className="mr-2 size-4" /> Support Us
+          </DropdownMenuItem>
+        </Link>
+
         <DropdownMenuSeparator />
 
         <DropdownMenuItem className="astro-silver pointer-events-none mt-2 pr-2 text-xs font-bold">

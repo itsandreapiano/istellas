@@ -7,7 +7,7 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 
-import { submitPost } from "./actions";
+import submitPost from "./actions";
 
 import { useSession } from "@/app/(main)/SessionProvider";
 
