@@ -143,7 +143,10 @@ function AddAttachmentsButton({
       <Button
         variant="ghost"
         size="icon"
-        className="text-primary hover:text-primary disabled:text-gray-400"
+        style={{
+          background: window.innerWidth <= 768 ? "none" : "",
+        }}
+        className="bg-none text-primary hover:text-primary disabled:text-gray-400"
         disabled={disabled}
         title="Attach one or more images."
         // To be fixed for videos, as they don't play properly once uploaded
@@ -212,7 +215,7 @@ function AttachmentPreview({
 
   return (
     <div
-      className={cn("relative mx-auto size-fit", isUploading && "opacity-50")}
+      className={cn("relative mx-auto max-w-full", isUploading && "opacity-50")}
     >
       {file.type.startsWith("image") ? (
         <Image
@@ -220,7 +223,7 @@ function AttachmentPreview({
           alt="Attachment preview"
           width={500}
           height={500}
-          className="size-fit max-h-[30rem] rounded-2xl"
+          className="max-h-[30rem] w-full rounded-2xl object-contain"
         />
       ) : (
         <video controls className="size-fit max-h-[30rem] rounded-2xl">

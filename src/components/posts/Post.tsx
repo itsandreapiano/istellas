@@ -88,12 +88,28 @@ interface MediaPreviewProps {
 
 function MediaPreview({ media }: MediaPreviewProps) {
   if (media.type === "IMAGE") {
+    // Rewrite correct URL for production, as uploadthing generates a different root link when we upload from production.
+    const rewriteUploadthingURL = (url: string) => {
+      if (url && /^https:\/\/[a-z0-9\-]+\.ufs\.sh/.test(url)) {
+        return url.replace(
+          /^https:\/\/[a-z0-9\-]+\.ufs\.sh/,
+          "https://utfs.io",
+        );
+      }
+      return url;
+    };
+
+    const imageUrl = rewriteUploadthingURL(media.url);
+
+    console.log("THIS IS MEDIA URL ---> ", media.url);
+
     return (
       <Image
-        src={media.url}
+        src={imageUrl}
         alt="Attachment"
         width={500}
         height={500}
+        priority
         className="mx-auto size-fit max-h-[30rem] rounded-2xl"
       />
     );
