@@ -1,7 +1,7 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-
-import ReactPlayer from "react-player";
 
 import { PostData } from "@/lib/types";
 import { formatRelativeDate, cn } from "@/lib/utils";
@@ -44,6 +44,7 @@ const Post = ({ post }: PostProps) => {
             <Link
               href={`/posts/${post.id}`}
               className="block text-sm text-muted-foreground"
+              suppressHydrationWarning
             >
               {formatRelativeDate(post.createdAt)}
             </Link>
