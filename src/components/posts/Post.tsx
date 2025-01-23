@@ -102,14 +102,14 @@ function MediaPreview({ media }: MediaPreviewProps) {
     const imageUrl = rewriteUploadthingURL(media.url);
 
     return (
-      <div className="mx-auto">
+      <div className="mx-auto mt-2">
         <Image
           src={imageUrl}
           alt="Attachment"
           width={500}
           height={500}
           priority
-          className="mobile:max-h-[30rem] mobile:w-full mobile:object-contain mx-auto h-auto max-h-screen w-auto rounded-2xl"
+          className="mx-auto h-auto max-h-screen w-auto rounded-2xl mobile:max-h-[30rem] mobile:w-full mobile:object-contain"
         />
       </div>
     );
