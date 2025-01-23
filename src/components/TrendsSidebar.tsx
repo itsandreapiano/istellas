@@ -46,7 +46,7 @@ async function WhoToFollow() {
       },
     },
     select: getUserDataSelect(user.id),
-    take: 5,
+    take: 3,
   });
 
   return (
@@ -98,7 +98,7 @@ const getTrendingTopics = unstable_cache(
             FROM posts
             GROUP BY (hashtag)
             ORDER BY count DESC, hashtag ASC
-            LIMIT 5
+            LIMIT 3
         `;
 
     return result.map((row) => ({

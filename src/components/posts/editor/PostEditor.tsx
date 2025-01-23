@@ -8,6 +8,8 @@ import Placeholder from "@tiptap/extension-placeholder";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
+import { useDropzone } from "@uploadthing/react";
+
 import { cn } from "@/lib/utils";
 
 import { useSubmitPostMutation } from "./mutations";
@@ -19,7 +21,7 @@ import LoadingButton from "@/components/LoadingButton";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
 
-import { ImageIcon, Loader2, X } from "lucide-react";
+import { ImageIcon, X } from "lucide-react";
 
 import "./styles.css";
 
@@ -36,6 +38,12 @@ const PostEditor = () => {
     removeAttachment,
     reset: resetMediaUploads,
   } = useMediaUpload();
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: startUpload,
+  });
+
+  const { onClick, ...rootProps } = getRootProps();
 
   const editor = useEditor({
     extensions: [
@@ -78,15 +86,29 @@ const PostEditor = () => {
     );
   }
 
+  const onPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    const files = Array.from(e.clipboardData.items)
+      .filter((item) => item.kind === "file")
+      .map((item) => item.getAsFile()) as File[];
+    startUpload(files);
+  };
+
   return (
     <div className="flex flex-col gap-5 rounded-2xl bg-card p-5 shadow-sm">
       <div className="text-xl font-bold">Share a Thought</div>
       <div className="flex gap-5">
         <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
-        <EditorContent
-          editor={editor}
-          className="max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3"
-        />
+        <div className="w-full overflow-hidden" {...rootProps}>
+          <EditorContent
+            editor={editor}
+            className={cn(
+              "post-editor max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3",
+              isDragActive && "outline-dashed",
+            )}
+            onPaste={onPaste}
+          />
+          <input {...getInputProps()} />
+        </div>
       </div>
       {!!attachments.length && (
         <AttachmentPreviews
@@ -144,7 +166,10 @@ function AddAttachmentsButton({
         variant="ghost"
         size="icon"
         style={{
-          background: window.innerWidth <= 768 ? "none" : "",
+          background:
+            typeof window !== "undefined" && window.innerWidth <= 768
+              ? "none"
+              : "",
         }}
         className="bg-none text-primary hover:text-primary disabled:text-gray-400"
         disabled={disabled}
@@ -216,7 +241,7 @@ function AttachmentPreview({
   return (
     <div
       className={cn(
-        "mobile:max-w-full relative mx-auto",
+        "relative mx-auto mobile:max-w-full",
         isUploading && "opacity-50",
       )}
     >
@@ -227,7 +252,7 @@ function AttachmentPreview({
           width={500}
           height={500}
           priority
-          className="mobile:max-h-[30rem] mobile:w-full mobile:object-contain mx-auto h-auto max-h-screen w-auto rounded-2xl"
+          className="mx-auto h-auto max-h-screen w-auto rounded-2xl mobile:max-h-[30rem] mobile:w-full mobile:object-contain"
         />
       ) : (
         <video controls className="size-fit max-h-[30rem] rounded-2xl">

@@ -118,7 +118,7 @@
 }
 
 /* Placeholder post editor, where tablet */
-@media (max-width: 815px) and (min-width: 769px) {
+@media (max-width: 840px) and (min-width: 768px) {
   .post-editor {
     height: 72px;
   }

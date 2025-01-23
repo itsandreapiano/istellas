@@ -59,11 +59,12 @@ export default function useMediaUpload() {
       const customMessage =
         e.message === "Invalid config: FileSizeMismatch"
           ? // To be fixed for videos, as they don't play properly once uploaded
-
             // "File size exceeds the limit! Please upload an image under 8MB or a video under 64MB."
-            "File size exceeds the limit! Please upload an image under 8MB."
-          : e.message;
 
+            "File size exceeds the limit! Please upload an image under 8MB."
+          : e.message === "Invalid config: InvalidFileType"
+            ? "Invalid file type! Please upload a supported image."
+            : e.message;
       setAttachments((prev) =>
         prev.filter((attachment) => !attachment.isUploading),
       );
