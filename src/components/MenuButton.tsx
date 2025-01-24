@@ -29,6 +29,12 @@ import {
   BookLock,
   HelpCircle,
   LifeBuoy,
+  Flame,
+  Ghost,
+  Meh,
+  XCircle,
+  Ban,
+  StopCircle,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -109,12 +115,12 @@ const MenuButton = ({ className }: MenuButtonProps) => {
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
               <DropdownMenuItem className="pointer-events-none text-gray-400">
-                <HeartOff className="mr-2 size-4" />
+                <Ban className="mr-2 size-4" />
                 Not interested
                 {/* {<Check className="ms-2 size-4" />} */}
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Heart className="mr-2 size-4" />
+                <Flame className="mr-2 size-4" />
                 Open to it
                 {<Check className="ms-2 size-4" />}
               </DropdownMenuItem>

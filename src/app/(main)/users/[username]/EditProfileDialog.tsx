@@ -130,7 +130,11 @@ const EditProfileDialog = ({
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your first name or alias." {...field} />
+                    <Input
+                      autoComplete="off"
+                      placeholder="Your first name or alias."
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
