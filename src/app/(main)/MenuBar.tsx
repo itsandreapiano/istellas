@@ -8,7 +8,7 @@ import { useSession } from "./SessionProvider";
 import { Button } from "@/components/ui/button";
 import UserAvatar from "@/components/UserAvatar";
 
-import { Home, Mail, Bell, DraftingCompass, Send } from "lucide-react";
+import { Home, Bell, DraftingCompass, Send } from "lucide-react";
 
 interface MenuBarProps {
   className?: string;

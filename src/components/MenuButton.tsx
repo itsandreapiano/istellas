@@ -19,22 +19,15 @@ import {
   UserCog,
   Key,
   Sparkles,
-  Heart,
   MessageCircleHeart,
-  HeartOff,
   Hash,
   UserPlus,
   Info,
   HeartHandshake,
   BookLock,
-  HelpCircle,
   LifeBuoy,
   Flame,
-  Ghost,
-  Meh,
-  XCircle,
   Ban,
-  StopCircle,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
