@@ -86,12 +86,12 @@ const PostEditor = () => {
     );
   };
 
-  const onPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-    const files = Array.from(e.clipboardData.items)
-      .filter((item) => item.kind === "file")
-      .map((item) => item.getAsFile()) as File[];
-    startUpload(files);
-  };
+  // const onPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+  //   const files = Array.from(e.clipboardData.items)
+  //     .filter((item) => item.kind === "file")
+  //     .map((item) => item.getAsFile()) as File[];
+  //   startUpload(files);
+  // };
 
   return (
     <div className="flex flex-col gap-5 rounded-2xl bg-card p-5 shadow-sm">
@@ -105,7 +105,7 @@ const PostEditor = () => {
               "post-editor max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3",
               isDragActive && "outline-dashed",
             )}
-            onPaste={onPaste}
+            // onPaste={onPaste}
           />
           <input {...getInputProps()} />
         </div>

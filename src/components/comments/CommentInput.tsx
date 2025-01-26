@@ -19,6 +19,8 @@ interface CommentInputProps {
 const CommentInput = ({ post }: CommentInputProps) => {
   const mutation = useSubmitCommentMutation(post.id);
 
+  const [isFocused, setIsFocused] = React.useState(false);
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -29,7 +31,14 @@ const CommentInput = ({ post }: CommentInputProps) => {
         placeholder: "Write a comment...",
       }),
     ],
+    autofocus: true,
   });
+
+  React.useEffect(() => {
+    if (editor) {
+      editor.commands.focus();
+    }
+  }, [editor]);
 
   const input =
     editor?.getText({
@@ -54,10 +63,16 @@ const CommentInput = ({ post }: CommentInputProps) => {
 
   return (
     <form className="flex w-full items-center gap-2" onSubmit={onSubmit}>
-      <EditorContent
-        editor={editor}
-        className="post-editor text-md max-h-[26rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3"
-      />
+      <div className="w-full overflow-hidden">
+        <EditorContent
+          editor={editor}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          className={`post-editor text-md max-h-56 w-full overflow-y-auto rounded-2xl border-2 border-transparent bg-background px-5 py-3 ring-offset-background ${
+            isFocused ? "!border-primary" : ""
+          }`}
+        />
+      </div>
       {!mutation.isPending ? (
         <Button
           type="submit"

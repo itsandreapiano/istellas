@@ -56,7 +56,7 @@ const Comments = ({ post }: CommentsProps) => {
         <Loader2 className="mx-auto mt-2 animate-spin" />
       )}
       {status === "success" && !comments.length && (
-        <p className="mt-3 text-center text-muted-foreground">
+        <p className="mt-3 text-center text-sm text-muted-foreground">
           No comments yet.
         </p>
       )}
