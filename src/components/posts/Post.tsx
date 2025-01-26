@@ -1,5 +1,7 @@
 "use client";
 
+import * as React from "react";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -7,6 +9,8 @@ import { PostData } from "@/lib/types";
 import { formatRelativeDate, cn } from "@/lib/utils";
 
 import { Media } from "@prisma/client";
+
+import calculateTimeAgo from "@/services/TimeAgo";
 
 import { useSession } from "@/app/(main)/SessionProvider";
 
@@ -17,12 +21,20 @@ import PostMoreButton from "./PostMoreButton";
 import UserTooltip from "../UserTooltip";
 import LikeButton from "./LikeButton";
 import BookmarkButton from "./BookmarkButton";
+import Comments from "../comments/Comments";
 
+import { MessageSquare } from "lucide-react";
 interface PostProps {
   post: PostData;
 }
 const Post = ({ post }: PostProps) => {
   const { user } = useSession();
+
+  const [showComments, setShowComments] = React.useState(false);
+
+  const timeAgo = calculateTimeAgo(post.createdAt, formatRelativeDate, {
+    includeSeconds: false,
+  });
 
   return (
     <article className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm">
@@ -48,7 +60,7 @@ const Post = ({ post }: PostProps) => {
               className="block text-sm text-muted-foreground"
               suppressHydrationWarning
             >
-              {formatRelativeDate(post.createdAt)}
+              {timeAgo}
             </Link>
           </div>
         </div>
@@ -62,13 +74,19 @@ const Post = ({ post }: PostProps) => {
       )}
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
-        <LikeButton
-          postId={post.id}
-          initialState={{
-            likes: post._count.likes,
-            isLikedByUser: post.likes.some((like) => like.userId === user.id),
-          }}
-        />
+        <div className="flex items-center gap-5">
+          <LikeButton
+            postId={post.id}
+            initialState={{
+              likes: post._count.likes,
+              isLikedByUser: post.likes.some((like) => like.userId === user.id),
+            }}
+          />
+          <CommentButton
+            post={post}
+            onClick={() => setShowComments(!showComments)}
+          />
+        </div>
         <BookmarkButton
           postId={post.id}
           initialState={{
@@ -78,6 +96,7 @@ const Post = ({ post }: PostProps) => {
           }}
         />
       </div>
+      {showComments && <Comments post={post} />}
     </article>
   );
 };
@@ -149,4 +168,20 @@ function MediaPreview({ media }: MediaPreviewProps) {
   }
 
   return <p className="text-destructive">Unsupported media type</p>;
+}
+
+interface CommentButtonProps {
+  post: PostData;
+  onClick: () => void;
+}
+
+function CommentButton({ post, onClick }: CommentButtonProps) {
+  return (
+    <button onClick={onClick} className="flex items-center gap-2">
+      <MessageSquare className="size-5" />
+      <span className="text-sm font-medium tabular-nums">
+        {post._count.comments}{" "}
+      </span>
+    </button>
+  );
 }
