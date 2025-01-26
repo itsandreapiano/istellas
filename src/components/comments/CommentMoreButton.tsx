@@ -29,7 +29,7 @@ const CommentMoreButton = ({ comment, className }: CommentMoreButtonProps) => {
             <MoreHorizontal className="size-5 text-muted-foreground" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="mr-1">
+        <DropdownMenuContent className="mr-32 mt-[-8px] shadow-[0_5px_15px_rgba(0,0,0,0.25)]">
           <DropdownMenuItem onClick={() => setShowDeleteDialog(true)}>
             <span className="flex items-center gap-2 px-1 py-1 text-foreground">
               <Trash2 className="size-4" />
