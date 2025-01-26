@@ -56,7 +56,7 @@ const CommentInput = ({ post }: CommentInputProps) => {
     <form className="flex w-full items-center gap-2" onSubmit={onSubmit}>
       <EditorContent
         editor={editor}
-        className="post-editor max-h-[26rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3 text-sm"
+        className="post-editor text-md max-h-[26rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3"
       />
       {!mutation.isPending ? (
         <Button
