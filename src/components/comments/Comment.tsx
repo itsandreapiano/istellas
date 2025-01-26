@@ -52,7 +52,7 @@ const Comment = ({ comment }: CommentProps) => {
             {timeAgo}
           </span>
         </div>
-        <div className="ms-auto flex justify-end pl-3">
+        <div className="ms-auto flex justify-end pl-1 mobile:pl-2">
           {(comment.user.id === user.id && (
             <CommentMoreButton
               comment={comment}

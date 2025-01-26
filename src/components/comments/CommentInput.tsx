@@ -2,10 +2,13 @@ import { PostData } from "@/lib/types";
 
 import * as React from "react";
 
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Placeholder from "@tiptap/extension-placeholder";
+
 import { useSubmitCommentMutation } from "./mutations";
 
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 
 import { Loader2, SendHorizonal } from "lucide-react";
 
@@ -14,9 +17,24 @@ interface CommentInputProps {
 }
 
 const CommentInput = ({ post }: CommentInputProps) => {
-  const [input, setInput] = React.useState("");
-
   const mutation = useSubmitCommentMutation(post.id);
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        bold: false,
+        italic: false,
+      }),
+      Placeholder.configure({
+        placeholder: "Write a comment...",
+      }),
+    ],
+  });
+
+  const input =
+    editor?.getText({
+      blockSeparator: "\n",
+    }) || "";
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,18 +47,16 @@ const CommentInput = ({ post }: CommentInputProps) => {
         content: input,
       },
       {
-        onSuccess: () => setInput(""),
+        onSuccess: () => editor?.commands.clearContent(),
       },
     );
   }
 
   return (
     <form className="flex w-full items-center gap-2" onSubmit={onSubmit}>
-      <Input
-        placeholder="Write a comment..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        autoFocus
+      <EditorContent
+        editor={editor}
+        className="post-editor max-h-[26rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3 text-sm"
       />
       {!mutation.isPending ? (
         <Button
