@@ -33,26 +33,34 @@ const Comment = ({ comment }: CommentProps) => {
         </UserTooltip>
       </span>
 
-      <div className="overflow-hidden">
-        <div className="flex items-center gap-1 text-sm">
-          <UserTooltip user={comment.user}>
-            <Link
-              href={`/users/${comment.user.username}`}
-              className="font-medium"
-            >
-              {comment.user.displayName}
-            </Link>
-          </UserTooltip>
-          <span className="text-muted-foreground">{timeAgo}</span>
+      <div className="flex w-full">
+        <div className="flex-grow overflow-hidden">
+          <div className="flex flex-col justify-start text-sm">
+            <UserTooltip user={comment.user}>
+              <Link
+                href={`/users/${comment.user.username}`}
+                className="text-sm font-medium"
+              >
+                {comment.user.displayName}
+              </Link>
+            </UserTooltip>
+          </div>
+          <div className="mb-[-1px] flex-shrink-0 text-sm">
+            {comment.content}
+          </div>
+          <span className="text-xs font-medium text-muted-foreground">
+            {timeAgo}
+          </span>
         </div>
-        <div className="w-96 flex-shrink-0">{comment.content}</div>
+        <div className="ms-auto flex justify-end pl-3">
+          {(comment.user.id === user.id && (
+            <CommentMoreButton
+              comment={comment}
+              className="transition-opacity"
+            />
+          )) || <span className="w-10" />}
+        </div>
       </div>
-      {(comment.user.id === user.id && (
-        <CommentMoreButton
-          comment={comment}
-          className="ms-auto transition-opacity"
-        />
-      )) || <span className="w-10" />}
     </div>
   );
 };
