@@ -36,7 +36,7 @@ const CommentInput = ({ post }: CommentInputProps) => {
       blockSeparator: "\n",
     }) || "";
 
-  async function onSubmit(e: React.FormEvent) {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!input) return;
@@ -50,7 +50,7 @@ const CommentInput = ({ post }: CommentInputProps) => {
         onSuccess: () => editor?.commands.clearContent(),
       },
     );
-  }
+  };
 
   return (
     <form className="flex w-full items-center gap-2" onSubmit={onSubmit}>

@@ -45,7 +45,7 @@ const Comment = ({ comment }: CommentProps) => {
               </Link>
             </UserTooltip>
           </div>
-          <div className="mb-[-1px] flex-shrink-0 text-sm">
+          <div className="mb-[-1px] flex-shrink-0 whitespace-pre-line text-sm">
             {comment.content}
           </div>
           <span className="text-xs font-medium text-muted-foreground">

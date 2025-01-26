@@ -62,7 +62,7 @@ const PostEditor = () => {
       blockSeparator: "\n",
     }) || "";
 
-  function onSubmit() {
+  const onSubmit = () => {
     mutation.mutate(
       {
         content: input,
@@ -84,7 +84,7 @@ const PostEditor = () => {
         },
       },
     );
-  }
+  };
 
   const onPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     const files = Array.from(e.clipboardData.items)
