@@ -10,7 +10,7 @@ import { formatRelativeDate, cn } from "@/lib/utils";
 
 import { Media } from "@prisma/client";
 
-import calculateTimeAgo from "@/services/TimeAgo";
+import calculateTimeAgo from "@/services/timeAgo";
 
 import { useSession } from "@/app/(main)/SessionProvider";
 
