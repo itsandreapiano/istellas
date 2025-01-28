@@ -23,7 +23,7 @@ import LikeButton from "./LikeButton";
 import BookmarkButton from "./BookmarkButton";
 import Comments from "../comments/Comments";
 
-import { MessageSquare } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 interface PostProps {
   post: PostData;
 }
@@ -85,6 +85,7 @@ const Post = ({ post }: PostProps) => {
           <CommentButton
             post={post}
             onClick={() => setShowComments(!showComments)}
+            showComments={showComments}
           />
         </div>
         <BookmarkButton
@@ -173,15 +174,20 @@ function MediaPreview({ media }: MediaPreviewProps) {
 interface CommentButtonProps {
   post: PostData;
   onClick: () => void;
+  showComments: boolean;
 }
 
-function CommentButton({ post, onClick }: CommentButtonProps) {
+const CommentButton = ({ post, onClick, showComments }: CommentButtonProps) => {
   return (
-    <button onClick={onClick} className="flex items-center gap-2">
-      <MessageSquare className="size-5" />
+    <button
+      onClick={onClick}
+      title={`${(!showComments && "View") || "Hide"} comments`}
+      className="flex items-center gap-1.5"
+    >
+      <MessageCircle className="size-5" />
       <span className="text-sm font-medium tabular-nums">
         {post._count.comments}{" "}
       </span>
     </button>
   );
-}
+};

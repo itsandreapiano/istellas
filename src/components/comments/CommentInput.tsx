@@ -62,20 +62,21 @@ const CommentInput = ({ post }: CommentInputProps) => {
   };
 
   return (
-    <form className="flex w-full items-center gap-2" onSubmit={onSubmit}>
+    <div className="flex w-full items-center gap-2">
       <div className="w-full overflow-hidden">
         <EditorContent
           editor={editor}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           className={`post-editor text-md max-h-56 w-full overflow-y-auto rounded-2xl border-2 border-transparent bg-background px-5 py-3 ring-offset-background ${
-            isFocused ? "!border-primary" : ""
+            isFocused ? "mobile:!border-primary" : ""
           }`}
         />
       </div>
       {!mutation.isPending ? (
         <Button
-          type="submit"
+          type="button"
+          onClick={onSubmit}
           variant="ghost"
           size="icon"
           disabled={!input.trim()}
@@ -92,7 +93,7 @@ const CommentInput = ({ post }: CommentInputProps) => {
           <Loader2 className="animate-spin text-foreground" />
         </Button>
       )}
-    </form>
+    </div>
   );
 };
 

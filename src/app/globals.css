@@ -18,8 +18,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    /* Buttons */
-    --primary: 39 90% 54%;
+    --primary: 39 90% 52%;
     --primary-foreground: 0 0% 100%;
 
     --secondary-btn-bg: 210 13% 90%;
@@ -106,23 +105,19 @@
 /*  Start Custom CSS ---> */
 /*  //////  */
 
-.astro-silver {
-  color: #959ba3;
-}
-.astro-gold {
-  color: hsl(var(--primary));
-}
-
 .astro-blue {
   color: hsl(var(--tags));
 }
 
-/* Placeholder post editor, where tablet */
-
+/* Post editor */
 @media (max-width: 840px) and (min-width: 768px) {
   .post-editor {
     height: 72px;
   }
+}
+
+.tiptap:focus-visible {
+  outline: none !important;
 }
 
 /* Size for mobile devices, to avoid zooming */
@@ -152,9 +147,6 @@
   }
 }
 
-.btn-post-more:focus {
-  border: 2px solid red;
-}
 /*  //////  */
 /*  <--- End Custom CSS */
 /*  //////  */

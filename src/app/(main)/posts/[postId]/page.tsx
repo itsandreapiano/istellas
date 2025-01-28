@@ -105,7 +105,7 @@ async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
         </Link>
       </UserTooltip>
       <Linkify>
-        <div className="line-clamp-6 whitespace-pre-line break-words">
+        <div className="line-clamp-6 whitespace-pre-line break-words text-sm">
           {user.bio}
         </div>
       </Linkify>

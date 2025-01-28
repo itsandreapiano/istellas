@@ -237,7 +237,7 @@ const MenuButton = ({ className }: MenuButtonProps) => {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className="astro-silver pointer-events-none mt-2 pr-2 text-xs font-bold">
+        <DropdownMenuItem className="text-astro-silver pointer-events-none mt-2 pr-2 text-xs font-bold">
           <Key className="mr-2 size-4 text-foreground" />@{user.username}
         </DropdownMenuItem>
         <DropdownMenuItem

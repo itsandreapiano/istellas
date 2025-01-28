@@ -86,26 +86,21 @@ const PostEditor = () => {
     );
   };
 
-  // const onPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-  //   const files = Array.from(e.clipboardData.items)
-  //     .filter((item) => item.kind === "file")
-  //     .map((item) => item.getAsFile()) as File[];
-  //   startUpload(files);
-  // };
-
   return (
     <div className="flex flex-col gap-5 rounded-2xl bg-card p-5 shadow-sm">
       <div className="text-xl font-bold">Share a Thought</div>
       <div className="flex gap-5">
         <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
-        <div className="w-full overflow-hidden" {...rootProps}>
+        <div
+          className={`w-full ${!isDragActive ? "overflow-hidden" : ""}`}
+          {...rootProps}
+        >
           <EditorContent
             editor={editor}
             className={cn(
               "post-editor max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3",
               isDragActive && "outline-dashed",
             )}
-            // onPaste={onPaste}
           />
           <input {...getInputProps()} />
         </div>
@@ -125,8 +120,7 @@ const PostEditor = () => {
                   className="h-1 rounded-full bg-primary"
                   style={{ width: `${uploadProgress ?? 0}%` }}
                 ></div>
-              </div>{" "}
-              {/* <Loader2 className="size-5 animate-spin text-primary" /> */}
+              </div>
             </>
           )}
           <AddAttachmentsButton

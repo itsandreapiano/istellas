@@ -16,6 +16,21 @@ interface CommentProps {
   comment: CommentData;
 }
 
+// Link (or other super long text cases) protection when shared in a comment
+const LONG_WORD_THRESHOLD = 30;
+
+const formatContent = (content: string) => {
+  return content.split(" ").map((word, index) =>
+    word.length > LONG_WORD_THRESHOLD ? (
+      <span key={index} className="break-all">
+        {word}
+      </span>
+    ) : (
+      word + " "
+    ),
+  );
+};
+
 const Comment = ({ comment }: CommentProps) => {
   const { user } = useSession();
 
@@ -24,8 +39,8 @@ const Comment = ({ comment }: CommentProps) => {
   });
 
   return (
-    <div className="group/comment flex gap-3 py-3">
-      <span className="size-8 flex-shrink-0 mobile:size-auto">
+    <div className="group/comment flex gap-2.5 py-3">
+      <span className="size-8 flex-shrink-0">
         <UserTooltip user={comment.user}>
           <Link href={`/users/${comment.user.username}`}>
             <UserAvatar avatarUrl={comment.user.avatarUrl} size={40} />
@@ -45,8 +60,8 @@ const Comment = ({ comment }: CommentProps) => {
               </Link>
             </UserTooltip>
           </div>
-          <div className="mb-[-1px] flex-shrink-0 whitespace-pre-line text-sm">
-            {comment.content}
+          <div className="mb-[-1px] flex-shrink-0 whitespace-pre-line break-words text-sm">
+            {formatContent(comment.content)}
           </div>
           <span className="text-xs font-medium text-muted-foreground">
             {timeAgo}
@@ -58,7 +73,7 @@ const Comment = ({ comment }: CommentProps) => {
               comment={comment}
               className="transition-opacity"
             />
-          )) || <span className="w-10" />}
+          )) || <span className="w-9" />}
         </div>
       </div>
     </div>

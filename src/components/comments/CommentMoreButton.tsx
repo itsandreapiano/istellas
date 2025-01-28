@@ -2,6 +2,8 @@ import { CommentData } from "@/lib/types";
 
 import * as React from "react";
 
+import { cn } from "@/lib/utils";
+
 import { Button } from "../ui/button";
 import {
   DropdownMenu,
@@ -11,7 +13,7 @@ import {
 } from "../ui/DropdownMenu";
 import DeleteCommentDialog from "./DeleteCommentDialog";
 
-import { MoreHorizontal, Trash2 } from "lucide-react";
+import { MoreVertical, Trash2 } from "lucide-react";
 
 interface CommentMoreButtonProps {
   comment: CommentData;
@@ -25,8 +27,12 @@ const CommentMoreButton = ({ comment, className }: CommentMoreButtonProps) => {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button size="icon" variant="ghost" className={className}>
-            <MoreHorizontal className="size-5 text-muted-foreground" />
+          <Button
+            size="icon"
+            variant="ghost"
+            className={cn("size-9", className)}
+          >
+            <MoreVertical className="size-4 text-muted-foreground" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="mr-10 mt-[-8px] shadow-[0_5px_15px_rgba(0,0,0,0.25)]">

@@ -1,25 +1,30 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-import { useSession } from "./SessionProvider";
+import prisma from "@/lib/prisma";
+
+import { validateRequest } from "@/auth";
 
 import { Button } from "@/components/ui/button";
-import UserAvatar from "@/components/UserAvatar";
+import NotificationsButton from "./NotificationsButton";
+import AvatarButton from "./AvatarButton";
 
-import { Home, Bell, DraftingCompass, Send } from "lucide-react";
+import { Home, DraftingCompass, Send } from "lucide-react";
 
 interface MenuBarProps {
   className?: string;
 }
 
-const MenuBar = ({ className }: MenuBarProps) => {
-  const { user } = useSession();
+const MenuBar = async ({ className }: MenuBarProps) => {
+  const { user } = await validateRequest();
 
-  const pathname = usePathname();
+  if (!user) return null;
 
-  const isCurrentUserRoute = pathname === `/users/${user.username}`;
+  const unreadNotificationCount = await prisma.notification.count({
+    where: {
+      recipientId: user.id,
+      read: false,
+    },
+  });
 
   return (
     <div className={className}>
@@ -56,17 +61,9 @@ const MenuBar = ({ className }: MenuBarProps) => {
           <span className="hidden lg:inline">Astro Charts</span>
         </Link>
       </Button>
-      <Button
-        variant="ghost"
-        className="flex items-center justify-start gap-3"
-        title="Notifications"
-        asChild
-      >
-        <Link href="/notifications">
-          <Bell className="size-[25px]" />
-          <span className="hidden lg:inline">Notifications</span>
-        </Link>
-      </Button>
+      <NotificationsButton
+        initialState={{ unreadCount: unreadNotificationCount }}
+      />
       <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
@@ -74,13 +71,7 @@ const MenuBar = ({ className }: MenuBarProps) => {
         asChild
       >
         <Link href={`/users/${user.username}`}>
-          <div className="relative">
-            <UserAvatar avatarUrl={user.avatarUrl} size={27} />
-            {isCurrentUserRoute && (
-              <div className="absolute inset-0 rounded-full border-[1.9px] border-foreground" />
-            )}
-          </div>
-          <span className="ml-[-0.2px] hidden lg:inline">Profile</span>
+          <AvatarButton />
         </Link>
       </Button>
     </div>

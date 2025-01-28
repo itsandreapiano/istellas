@@ -61,11 +61,15 @@ const LikeButton = ({ postId, initialState }: LikeButtonProps) => {
   });
 
   return (
-    <button onClick={() => mutate()} className="flex items-center gap-2">
+    <button
+      title={`${(!data.isLikedByUser && "Like") || "Unlike"} this post`}
+      onClick={() => mutate()}
+      className="flex items-center gap-1.5"
+    >
       <Heart
         className={cn(
           "size-5",
-          data.isLikedByUser && "fill-red-500 text-red-500",
+          data.isLikedByUser && "fill-astro-red text-astro-red",
         )}
       />
       <span className="text-sm font-medium tabular-nums">{data.likes}</span>
