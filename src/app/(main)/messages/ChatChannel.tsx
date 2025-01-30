@@ -22,7 +22,7 @@ const ChatChannel = ({ open, openSidebar }: ChatChannelProps) => {
         <Window>
           <CustomChannelHeader openSidebar={openSidebar} />
           <MessageList hideDeletedMessages />
-          <div className="pb-1.5">
+          <div className="pb-6 mobile:pb-1.5">
             <MessageInput grow audioRecordingEnabled />
           </div>
         </Window>
