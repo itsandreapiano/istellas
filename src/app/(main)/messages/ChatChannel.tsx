@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ChevronLeft, Send } from "lucide-react";
+import { ChevronLeft, Send } from "lucide-react";
 import {
   Channel,
   ChannelHeader,
@@ -56,10 +56,10 @@ function CustomChannelHeader({
   ...props
 }: CustomChannelHeaderProps) {
   return (
-    <div className="flex items-center gap-3">
-      <div className="h-full p-2 md:hidden">
+    <div className="flex items-center">
+      <div className="h-full pl-2 pt-2 md:hidden">
         <Button size="icon" variant="ghost" onClick={openSidebar}>
-          <ChevronLeft className="size-6" />
+          <ChevronLeft className="size-7" />
         </Button>
       </div>
       <ChannelHeader {...props} />
