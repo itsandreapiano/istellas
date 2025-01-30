@@ -36,7 +36,7 @@ export const createPostSchema = z.object({
 
 export const updateUserProfileSchema = z.object({
   displayName: nonEmptyString("Please choose a name.").regex(
-    /^(?=.{1,18}$)[A-ZÀ-ÖØ-ÝŁ][a-zà-öø-ÿł]*(?:[’'][a-zà-öø-ÿł]+)?(?: [A-ZÀ-ÖØ-ÝŁ][a-zà-öø-ÿł]*(?:[’'][a-zà-öø-ÿł]+)?)*$/u,
+    /^(?=.{1,18}$)[A-Za-zÀ-ÖØ-öø-ÿł](?:[a-zà-öø-ÿł]*(?:[’'][a-zà-öø-ÿł]+)?(?: [A-Za-zÀ-ÖØ-ÝŁ][a-zà-öø-ÿł]*(?:[’'][a-zà-öø-ÿł]+)?)*)?$/u,
     "Please enter a valid name or alias - with a maximum of 18 letters.",
   ),
 

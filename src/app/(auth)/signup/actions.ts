@@ -12,6 +12,7 @@ import { lucia } from "@/auth";
 
 import prisma from "@/lib/prisma";
 import { signUpSchema, SignUpValues } from "@/lib/validation";
+import streamServerClient from "@/lib/stream";
 
 export async function signUp(
   credentials: SignUpValues,
@@ -39,7 +40,7 @@ export async function signUp(
 
     if (existingUsername) {
       return {
-        error: `We already have a *stella* called '${username}'. Please choose another username.`,
+        error: "Username already taken",
       };
     }
 
@@ -54,18 +55,25 @@ export async function signUp(
 
     if (existingEmail) {
       return {
-        error: "This email has already been used! Please use another one.",
+        error: "Email already taken",
       };
     }
 
-    await prisma.user.create({
-      data: {
+    await prisma.$transaction(async (tx) => {
+      await tx.user.create({
+        data: {
+          id: userId,
+          username,
+          displayName: username,
+          email,
+          passwordHash,
+        },
+      });
+      await streamServerClient.upsertUser({
         id: userId,
         username,
-        displayName: username,
-        email,
-        passwordHash,
-      },
+        name: username,
+      });
     });
 
     const session = await lucia.createSession(userId, {});
@@ -81,7 +89,7 @@ export async function signUp(
     if (isRedirectError(error)) throw error;
     console.error(error);
     return {
-      error: "Whops! Something went wrong. Please try again.",
+      error: "Something went wrong. Please try again.",
     };
   }
 }

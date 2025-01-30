@@ -20,19 +20,19 @@ const Notification = ({ notification }: NotificationProps) => {
   > = {
     FOLLOW: {
       message: "started following you.",
-      icon: <UsersRound className="text-astro-gold size-6" />,
+      icon: <UsersRound className="size-6 text-astro-gold" />,
       href: `/users/${notification.issuer.username}`,
     },
     COMMENT: {
       message: "commented on your post.",
       icon: (
-        <MessageCircle className="text-astro-green fill-astro-green size-6" />
+        <MessageCircle className="size-6 fill-astro-green text-astro-green" />
       ),
       href: `/posts/${notification.postId}`,
     },
     LIKE: {
       message: "liked your post.",
-      icon: <Heart className="text-astro-red fill-astro-red size-6" />,
+      icon: <Heart className="size-6 fill-astro-red text-astro-red" />,
       href: `/posts/${notification.postId}`,
     },
   };
@@ -44,7 +44,7 @@ const Notification = ({ notification }: NotificationProps) => {
       <article
         className={cn(
           "flex gap-3 rounded-2xl bg-card p-5 shadow-sm transition-colors hover:bg-card/70",
-          !notification.read && "bg-primary/20",
+          !notification.read && "bg-yellow-600/15",
         )}
       >
         <div className="my-1">{icon}</div>
