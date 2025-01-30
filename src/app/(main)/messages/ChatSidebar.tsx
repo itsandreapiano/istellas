@@ -15,7 +15,7 @@ import { useSession } from "../SessionProvider";
 import NewChatDialog from "./NewChatDialog";
 import { Button } from "@/components/ui/button";
 
-import { MailPlus, X } from "lucide-react";
+import { MailPlus } from "lucide-react";
 
 interface ChatSidebarProps {
   open: boolean;
@@ -57,6 +57,7 @@ const ChatSidebar = ({ open, onClose }: ChatSidebarProps) => {
     >
       <MenuHeader onClose={onClose} />
       <ChannelList
+        setActiveChannelOnMount={false}
         filters={{
           type: "messaging",
           members: { $in: [user.id] },

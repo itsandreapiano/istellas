@@ -7,6 +7,7 @@ import {
   ChannelHeaderProps,
   MessageInput,
   MessageList,
+  useChatContext,
   Window,
 } from "stream-chat-react";
 
@@ -16,8 +17,17 @@ interface ChatChannelProps {
 }
 
 const ChatChannel = ({ open, openSidebar }: ChatChannelProps) => {
+  const { channel } = useChatContext();
+
   return (
     <div className={cn("w-full md:block", !open && "hidden")}>
+      {!channel && (
+        <div className="flex h-screen items-center justify-center p-4 text-center text-sm text-gray-500">
+          <h2 className="mb-20 self-center">
+            Select a chat to start messaging
+          </h2>
+        </div>
+      )}
       <Channel>
         <Window>
           <CustomChannelHeader openSidebar={openSidebar} />
