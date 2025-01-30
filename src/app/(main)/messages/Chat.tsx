@@ -25,7 +25,7 @@ const Chat = () => {
   }
 
   return (
-    <main className="relative w-full overflow-hidden rounded-2xl bg-card shadow-sm">
+    <main className="relative h-auto w-full overflow-hidden rounded-2xl bg-card shadow-sm">
       <div className="absolute bottom-0 top-0 flex w-full">
         <StreamChat
           client={chatClient}
@@ -39,6 +39,7 @@ const Chat = () => {
             open={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
           />
+
           <ChatChannel
             open={!sidebarOpen}
             openSidebar={() => setSidebarOpen(true)}
