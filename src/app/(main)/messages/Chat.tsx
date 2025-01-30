@@ -25,7 +25,7 @@ const Chat = () => {
   }
 
   return (
-    <main className="relative h-[calc(85vh-85px)] w-full overflow-hidden rounded-2xl bg-card shadow-sm mobile:h-auto">
+    <main className="relative w-full overflow-hidden rounded-2xl bg-card shadow-sm">
       <div className="absolute bottom-0 top-0 flex w-full">
         <StreamChat
           client={chatClient}

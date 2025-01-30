@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
+import { Menu, Send } from "lucide-react";
 import {
   Channel,
   ChannelHeader,
@@ -24,6 +24,12 @@ const ChatChannel = ({ open, openSidebar }: ChatChannelProps) => {
           <MessageList hideDeletedMessages />
           <div className="pb-1.5">
             <MessageInput grow audioRecordingEnabled />
+            <div className="pt-5 text-center">
+              <hr className="text-muted-foreground" />
+              <h2 className="flex items-center justify-center p-2 text-sm text-astro-silver">
+                iStellas <Send size={19} className="mb-[3px] ml-[5px] pt-1" />
+              </h2>
+            </div>
           </div>
         </Window>
       </Channel>
