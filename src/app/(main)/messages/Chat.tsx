@@ -39,7 +39,6 @@ const Chat = () => {
             open={sidebarOpen}
             onClose={() => setSidebarOpen(false)}
           />
-
           <ChatChannel
             open={!sidebarOpen}
             openSidebar={() => setSidebarOpen(true)}
