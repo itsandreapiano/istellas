@@ -129,19 +129,6 @@ interface MediaPreviewProps {
 
 function MediaPreview({ media }: MediaPreviewProps) {
   if (media.type === "IMAGE") {
-    // Rewrite correct URL for production, as uploadthing generates a different root link when we upload from production.
-    // const rewriteUploadthingURL = (url: string) => {
-    //   if (url && /^https:\/\/[a-z0-9\-]+\.ufs\.sh/.test(url)) {
-    //     return url.replace(
-    //       /^https:\/\/[a-z0-9\-]+\.ufs\.sh/,
-    //       "https://utfs.io",
-    //     );
-    //   }
-    //   return url;
-    // };
-
-    // const imageUrl = rewriteUploadthingURL(media.url);
-
     return (
       <div className="mx-auto mt-2">
         <Image

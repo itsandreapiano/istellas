@@ -7,6 +7,7 @@ import loginImage from "@/assets/login-image.jpg";
 import Logo from "@/components/ui/Logo";
 
 import LoginForm from "./LoginForm";
+import GoogleSignInButton from "./GoogleSignInButton";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -27,6 +28,12 @@ const LoginPage = () => {
             </p>
           </div>
           <div className="space-y-5">
+            <GoogleSignInButton />
+            <div className="flex items-center gap-3">
+              <div className="h-px flex-1 bg-muted" />
+              <span className="text-sm">OR</span>
+              <div className="h-px flex-1 bg-muted" />
+            </div>
             <LoginForm />
             <Link
               href="/signup"

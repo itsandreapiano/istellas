@@ -59,7 +59,7 @@ function CustomChannelHeader({
     <div className="flex items-center">
       <div className="h-full pl-2 pt-2 md:hidden">
         <Button size="icon" variant="ghost" onClick={openSidebar}>
-          <ChevronLeft className="size-7" />
+          <ChevronLeft className="size-8" />
         </Button>
       </div>
       <ChannelHeader {...props} />

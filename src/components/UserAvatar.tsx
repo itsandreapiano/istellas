@@ -11,19 +11,20 @@ interface UserAvatarProps {
 }
 
 const UserAvatar = ({ avatarUrl, size, className }: UserAvatarProps) => {
-  // Rewrite correct URL for production, as uploadthing generates a different root link when we upload from production.
-  // const rewriteUploadthingURL = (url: string | null | undefined) => {
-  //   if (url && /^https:\/\/[a-z0-9\-]+\.ufs\.sh/.test(url)) {
-  //     return url.replace(/^https:\/\/[a-z0-9\-]+\.ufs\.sh/, "https://utfs.io");
-  //   }
-  //   return url;
-  // };
+  // Increased quality for Google link
+  const getHighQualityAvatar = (url: string | null | undefined) => {
+    if (!url) return avatarPlaceholder;
 
-  // const imageUrl = rewriteUploadthingURL(avatarUrl);
+    if (url.includes("lh3.googleusercontent.com")) {
+      return url.replace(/=s\d+-c$/, "=s1200-c");
+    }
+
+    return url;
+  };
 
   return (
     <Image
-      src={avatarUrl || avatarPlaceholder}
+      src={getHighQualityAvatar(avatarUrl)}
       alt="User avatar"
       width={size ?? 48}
       height={size ?? 48}

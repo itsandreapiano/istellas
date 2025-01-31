@@ -21,13 +21,15 @@ import {
   Sparkles,
   MessageCircleHeart,
   Hash,
-  UserPlus,
   Info,
   HeartHandshake,
   BookLock,
   LifeBuoy,
   Flame,
   Ban,
+  Circle,
+  UserSearch,
+  UserCircle,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -48,6 +50,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "./ui/DropdownMenu";
+import { BinIcon } from "stream-chat-react";
 
 interface MenuButtonProps {
   className?: string;
@@ -68,16 +71,24 @@ const MenuButton = ({ className }: MenuButtonProps) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="px-1 py-1 shadow-[0_1px_10px_rgba(0,0,0,0.25)]">
-        <DropdownMenuLabel className="text-md px-12 text-center text-[14px] md:px-14">
+        <DropdownMenuLabel className="text-md px-12 text-center text-[14px] md:px-20">
           Activity & Settings
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {/* <Link href={`/users/${user.username}`}>
+
+        <Link href="/online-users">
           <DropdownMenuItem>
-            <UserIcon className="mr-2 size-4" />
-            Profile
+            <Circle className="ml-[2.59px] mr-[12px] size-2 fill-astro-green text-astro-green" />{" "}
+            Online users
           </DropdownMenuItem>
-        </Link> */}
+        </Link>
+        <Link href="/advanced-search">
+          <DropdownMenuItem>
+            <UserSearch className="mr-2 size-4" /> Advanced search
+          </DropdownMenuItem>
+        </Link>
+
+        <DropdownMenuSeparator />
         <Link href="/bookmarks">
           <DropdownMenuItem>
             <Bookmark className="mr-2 size-4" />
@@ -92,11 +103,6 @@ const MenuButton = ({ className }: MenuButtonProps) => {
         <Link href="/trending-topics">
           <DropdownMenuItem>
             <Hash className="mr-2 size-4" /> Trending topics
-          </DropdownMenuItem>
-        </Link>
-        <Link href="/who-to-follow">
-          <DropdownMenuItem>
-            <UserPlus className="ml-[2px] mr-[7.7px] size-4" /> Who to follow
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSeparator />
@@ -218,6 +224,13 @@ const MenuButton = ({ className }: MenuButtonProps) => {
           </DropdownMenuItem>
         </Link>
 
+        <Link href="/account-center">
+          <DropdownMenuItem>
+            <UserCircle className="mr-2 size-4" />
+            Account center
+          </DropdownMenuItem>
+        </Link>
+
         <Link href="/help">
           <DropdownMenuItem>
             <LifeBuoy className="mr-2 size-4" /> Help
@@ -237,7 +250,7 @@ const MenuButton = ({ className }: MenuButtonProps) => {
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem className="text-astro-silver pointer-events-none mt-2 pr-2 text-xs font-bold">
+        <DropdownMenuItem className="pointer-events-none mt-2 pr-2 text-xs font-bold text-astro-silver">
           <Key className="mr-2 size-4 text-foreground" />@{user.username}
         </DropdownMenuItem>
         <DropdownMenuItem
